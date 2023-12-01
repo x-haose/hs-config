@@ -5,19 +5,19 @@ description = ""
 authors = [
     { name = "xinghao", email = "xhrtxh@gmail.com" },
 ]
+
 dependencies = [
     "pydantic[dotenv]>=2.5.1",
     "pydantic-settings>=2.1.0",
 ]
+
 requires-python = ">=3.8,<3.12"
 readme = "README.MD"
 license = { text = "MIT" }
+
 [build-system]
 requires = ["pdm-pep517>=1.0.0"]
 build-backend = "pdm.pep517.api"
-
-[tool.isort]
-profile = "black"
 
 [tool.mypy]
 python_version = "3.11"
@@ -25,6 +25,9 @@ ignore_missing_imports = true
 
 [tool.black]
 line-length = 120
+
+[tool.isort]
+profile = "black"
 
 
 [tool.ruff]
@@ -91,4 +94,3 @@ verify_ssl = true
 
 [tool.pdm.scripts]
 check = "pdm run pre-commit run --all-files"
-run = "pdm run python -m hs_pikpak"

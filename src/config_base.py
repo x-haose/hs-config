@@ -1,12 +1,16 @@
 import json
-from abc import abstractmethod, ABCMeta
+from abc import ABCMeta, abstractmethod
 from configparser import ConfigParser
 from pathlib import Path
 from typing import Any, Dict, Tuple, Type
 
 import yaml
 from pydantic.fields import FieldInfo
-from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
+from pydantic_settings import (
+    BaseSettings,
+    PydanticBaseSettingsSource,
+    SettingsConfigDict,
+)
 
 
 class CustomSettingsSource(PydanticBaseSettingsSource):
@@ -14,10 +18,14 @@ class CustomSettingsSource(PydanticBaseSettingsSource):
     自定义的配置文件来源基类
     """
 
-    def __init__(self, settings_cls: type[BaseSettings], path: Path, ):
+    def __init__(
+        self,
+        settings_cls: type[BaseSettings],
+        path: Path,
+    ):
         super().__init__(settings_cls)
         self.path = path
-        encoding = self.config.get('env_file_encoding')
+        encoding = self.config.get("env_file_encoding")
         self.file_content = path.read_text(encoding)
         self.file_content_dict = self.get_file_dict()
 
@@ -25,12 +33,8 @@ class CustomSettingsSource(PydanticBaseSettingsSource):
         d: Dict[str, Any] = {}
 
         for field_name, field in self.settings_cls.model_fields.items():
-            field_value, field_key, value_is_complex = self.get_field_value(
-                field, field_name
-            )
-            field_value = self.prepare_field_value(
-                field_name, field, field_value, value_is_complex
-            )
+            field_value, field_key, value_is_complex = self.get_field_value(field, field_name)
+            field_value = self.prepare_field_value(field_name, field, field_value, value_is_complex)
             if field_value is not None:
                 d[field_key] = field_value
 
@@ -86,20 +90,21 @@ class ConfigBase(BaseSettings, metaclass=ABCMeta):
     """
     项目设置的基类
     """
+
     model_config = SettingsConfigDict(
-        env_file_encoding='utf-8',
+        env_file_encoding="utf-8",
         env_nested_delimiter="__",
         env_file=(Path.cwd() / "configs").absolute() / ".env",
     )
 
     @classmethod
     def settings_customise_sources(
-            cls,
-            settings_cls: Type[BaseSettings],
-            init_settings: PydanticBaseSettingsSource,
-            env_settings: PydanticBaseSettingsSource,
-            dotenv_settings: PydanticBaseSettingsSource,
-            file_secret_settings: PydanticBaseSettingsSource,
+        cls,
+        settings_cls: Type[BaseSettings],
+        init_settings: PydanticBaseSettingsSource,
+        env_settings: PydanticBaseSettingsSource,
+        dotenv_settings: PydanticBaseSettingsSource,
+        file_secret_settings: PydanticBaseSettingsSource,
     ) -> Tuple[PydanticBaseSettingsSource, ...]:
         """
         自定义配置来源
