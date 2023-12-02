@@ -1,7 +1,7 @@
 [project]
-name = ""
-version = ""
-description = ""
+name = "hs-config"
+version = "0.1.0"
+description = "基于pydantic的python项目通用配置库"
 authors = [
     { name = "xinghao", email = "xhrtxh@gmail.com" },
 ]
