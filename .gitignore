@@ -9,9 +9,8 @@ __pycache__/
 
 .idea/
 
-# pdm
-.pdm.toml
-.pdm-python
+# rye
+.python-version
 
 # Distribution / packaging
 .Python

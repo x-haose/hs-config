@@ -1,0 +1,23 @@
+[
+  {
+    "type": "dir",
+    "name": "start",
+    "label": "开始",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "use",
+    "label": "详细用法",
+    "collapsible": true,
+    "collapsed": false
+  },
+  {
+    "type": "dir",
+    "name": "example",
+    "label": "示例",
+    "collapsible": true,
+    "collapsed": false
+  }
+]
