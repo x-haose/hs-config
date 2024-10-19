@@ -1,6 +1,6 @@
 [project]
 name = "hs-config"
-version = "0.1.3a2"
+version = "0.1.3a5"
 keywords = ["Python", "配置", "Pydantic"]
 description = ""
 authors = [
@@ -46,14 +46,14 @@ dev-dependencies = [
     "pre-commit>=4.0.1",
 ]
 include = [
-    "src/hs-config/"
+    "./src/hs_config"
 ]
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/sanic_api"]
+packages = ["src/hs_config"]
 
 [[tool.rye.sources]]
 name = "default"
