@@ -58,12 +58,12 @@ packaging==24.2
 platformdirs==4.3.6
     # via virtualenv
 pre-commit==4.0.1
-pydantic==2.9.2
+pydantic==2.10.6
     # via hs-config
     # via pydantic-settings
-pydantic-core==2.23.4
+pydantic-core==2.27.2
     # via pydantic
-pydantic-settings==2.5.2
+pydantic-settings==2.7.1
     # via hs-config
 pygments==2.19.1
     # via readme-renderer
