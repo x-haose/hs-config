@@ -1,5 +1,5 @@
 {
-  "name": "rspress-doc-template",
+  "name": "hs-config",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,9 +8,9 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "rspress": "^1.32.0"
+    "rspress": "^1.40.0"
   },
   "devDependencies": {
-    "@types/node": "^16"
+    "@types/node": "^18.11.17"
   }
 }
